@@ -12,9 +12,31 @@
           <%= link_to 'Przyjaciele', friends_path, class:"nav-link" %>
         </li>
 
-                <li class="nav-item">
+<% if user_signed_in? %>
+
+        <li class="nav-item">
           <%= link_to 'Dodaj przyjaciela', new_friend_path, class:"nav-link" %>
+        </li> 
+
+        <li class="nav-item">
+          <%= link_to 'Wyloguj', destroy_user_session_path, method: :delete, class:"nav-link" %>
         </li>
+
+        <li class="nav-item">
+          <%= link_to 'Edytuj profil', edit_user_registration_path, class:"nav-link" %>
+        </li>
+
+<% else %>
+
+        <li class="nav-item">
+          <%= link_to 'Utwórz konto', new_user_registration_path, class:"nav-link" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Logowanie', new_user_session_path, class:"nav-link" %>
+        </li>
+
+<% end %>
 
         <li class="nav-item">
           <%= link_to 'O nas', home_about_path, class:"nav-link" %>
